@@ -11,7 +11,6 @@
 		540C8DD11D117FE100934E35 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C8DD01D117FE100934E35 /* Results.swift */; };
 		546F0B321D19CD900083030D /* baseline.txt in Resources */ = {isa = PBXBuildFile; fileRef = 546F0B311D19CD900083030D /* baseline.txt */; };
 		546F0B341D19CD9C0083030D /* coefficients.txt in Resources */ = {isa = PBXBuildFile; fileRef = 546F0B331D19CD9C0083030D /* coefficients.txt */; };
-		546F0B381D19D0F50083030D /* Means.txt in Resources */ = {isa = PBXBuildFile; fileRef = 546F0B371D19D0F50083030D /* Means.txt */; };
 		548366181D0F341D0068511A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548366171D0F341D0068511A /* AppDelegate.swift */; };
 		5483661A1D0F341D0068511A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548366191D0F341D0068511A /* ViewController.swift */; };
 		5483661D1D0F341D0068511A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5483661B1D0F341D0068511A /* Main.storyboard */; };
@@ -21,6 +20,7 @@
 		5483663A1D0F594E0068511A /* DiseaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548366391D0F594E0068511A /* DiseaseCell.swift */; };
 		5483663C1D0F5A330068511A /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5483663B1D0F5A330068511A /* Disease.swift */; };
 		5483663E1D0F5F5C0068511A /* DiseaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5483663D1D0F5F5C0068511A /* DiseaseViewController.swift */; };
+		54E44C0D1D19D41E000E554D /* Means.txt in Resources */ = {isa = PBXBuildFile; fileRef = 54E44C0C1D19D41E000E554D /* Means.txt */; };
 		54F8B62B1D160B91001FFE90 /* variables.txt in Resources */ = {isa = PBXBuildFile; fileRef = 54F8B62A1D160B91001FFE90 /* variables.txt */; };
 		F3F6441A1D19CA0A005736F8 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F644191D19CA0A005736F8 /* ResultsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,6 @@
 		540C8DD01D117FE100934E35 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		546F0B311D19CD900083030D /* baseline.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baseline.txt; sourceTree = "<group>"; };
 		546F0B331D19CD9C0083030D /* coefficients.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coefficients.txt; sourceTree = "<group>"; };
-		546F0B371D19D0F50083030D /* Means.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Means.txt; sourceTree = "<group>"; };
 		548366141D0F341D0068511A /* RiskScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiskScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548366171D0F341D0068511A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		548366191D0F341D0068511A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		548366391D0F594E0068511A /* DiseaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiseaseCell.swift; sourceTree = "<group>"; };
 		5483663B1D0F5A330068511A /* Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 		5483663D1D0F5F5C0068511A /* DiseaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiseaseViewController.swift; path = ../DiseaseViewController.swift; sourceTree = "<group>"; };
+		54E44C0C1D19D41E000E554D /* Means.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Means.txt; sourceTree = "<group>"; };
 		54F8B62A1D160B91001FFE90 /* variables.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = variables.txt; sourceTree = "<group>"; };
 		F3F644191D19CA0A005736F8 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,9 +101,9 @@
 				548366191D0F341D0068511A /* ViewController.swift */,
 				5483663D1D0F5F5C0068511A /* DiseaseViewController.swift */,
 				5483661B1D0F341D0068511A /* Main.storyboard */,
-				546F0B371D19D0F50083030D /* Means.txt */,
 				546F0B311D19CD900083030D /* baseline.txt */,
 				546F0B331D19CD9C0083030D /* coefficients.txt */,
+				54E44C0C1D19D41E000E554D /* Means.txt */,
 				F3F644191D19CA0A005736F8 /* ResultsViewController.swift */,
 				540C8DD01D117FE100934E35 /* Results.swift */,
 				548366391D0F594E0068511A /* DiseaseCell.swift */,
@@ -210,7 +210,7 @@
 			files = (
 				548366221D0F341D0068511A /* LaunchScreen.storyboard in Resources */,
 				5483661F1D0F341D0068511A /* Assets.xcassets in Resources */,
-				546F0B381D19D0F50083030D /* Means.txt in Resources */,
+				54E44C0D1D19D41E000E554D /* Means.txt in Resources */,
 				546F0B341D19CD9C0083030D /* coefficients.txt in Resources */,
 				546F0B321D19CD900083030D /* baseline.txt in Resources */,
 				54F8B62B1D160B91001FFE90 /* variables.txt in Resources */,
