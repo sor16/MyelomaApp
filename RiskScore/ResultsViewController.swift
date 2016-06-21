@@ -9,7 +9,9 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-
+    @IBOutlet weak var oneYearSurv : UILabel!
+    @IBOutlet weak var fiveYearSurv : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
