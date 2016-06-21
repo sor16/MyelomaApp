@@ -13,9 +13,15 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: Declaring variables
     
     var diseaseArray : [Disease] = []
+    var Coefficients : [Double] = []
+    var ColMeans : [Double] = []
+    var BaseLine : [Double] = []
     var results : Results!
     
-    var txtFile : [String] = []
+    var txtFileVar : [String] = []
+    var txtFileCoef : [String] = []
+    var txtFileMeans : [String] = []
+    var txtFileBaseLine : [String]=[]
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var Scroller: UIScrollView!
@@ -39,16 +45,34 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return fileContents!.componentsSeparatedByString("\n")
     }
-    
+    // Assia
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view
-        txtFile = arrayFromContentsOfFileWithName("variables.txt")!
-        for i in 0..<txtFile.count {
-            txtFile[i] = txtFile[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            diseaseArray.append(Disease().initWithDiseaseName(txtFile[i], selected: false))
+        //
+        txtFileVar = arrayFromContentsOfFileWithName("variables.txt")!
+        
+        for i in 0..<txtFileVar.count {
+            txtFileVar[i] = txtFileVar[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            diseaseArray.append(Disease().initWithDiseaseName(txtFileVar[i], selected: false))
         }
+        
+        txtFileCoef = arrayFromContentsOfFileWithName("coefficients.txt")!
+        txtFileMeans = arrayFromContentsOfFileWithName("Means.txt")!
+        
+        for i in 0..<txtFileCoef.count{
+            txtFileCoef[i] = txtFileCoef[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            Coefficients.append(Double(txtFileCoef[i])!)
+            txtFileMeans[i] = txtFileMeans[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            ColMeans.append(Double(txtFileMeans[i])!)
+        }
+        txtFileBaseLine = arrayFromContentsOfFileWithName("baseline.txt")!
+        for i in 0..<txtFileBaseLine.count{
+            txtFileBaseLine[i] = txtFileBaseLine[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            BaseLine.append(Double(txtFileBaseLine[i])!)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,18 +124,25 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         if segue.identifier == "Calculate" {
             // Calculate info...
             
-            var modelArray : [Int] = [2013,results.age, results.sex.rawValue]
+            var modelArray : [Int] = [2013, results.sex.rawValue,results.age]
             
             for disease in diseaseArray {
                 modelArray.append(Int(disease.diseaseSelected))
             }
-            
-            print(modelArray)
+            var coefSum : Double = 0
+            for i in 0..<modelArray.count {
+                coefSum += Coefficients[i]*(Double(modelArray[i])-ColMeans[i])
+            }
+            print(exp(-BaseLine[364]*exp(coefSum)))
+            print(exp(-BaseLine[365*5-1]*exp(coefSum)))
+            let dest = segue.destinationViewController as! ResultsViewController
+            //dest.oneYearSurv = String(exp(BaseLine[364]*exp(coefSum)))
+            //dest.fiveYearSurv = String(exp(-BaseLine[365*5-1]*exp(coefSum)))
         }
     }
     

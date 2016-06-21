@@ -19,6 +19,7 @@
 		5483663C1D0F5A330068511A /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5483663B1D0F5A330068511A /* Disease.swift */; };
 		5483663E1D0F5F5C0068511A /* DiseaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5483663D1D0F5F5C0068511A /* DiseaseViewController.swift */; };
 		54F8B62B1D160B91001FFE90 /* variables.txt in Resources */ = {isa = PBXBuildFile; fileRef = 54F8B62A1D160B91001FFE90 /* variables.txt */; };
+		F3F6441A1D19CA0A005736F8 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F644191D19CA0A005736F8 /* ResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		5483663B1D0F5A330068511A /* Disease.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 		5483663D1D0F5F5C0068511A /* DiseaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiseaseViewController.swift; path = ../DiseaseViewController.swift; sourceTree = "<group>"; };
 		54F8B62A1D160B91001FFE90 /* variables.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = variables.txt; sourceTree = "<group>"; };
+		F3F644191D19CA0A005736F8 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				548366191D0F341D0068511A /* ViewController.swift */,
 				5483663D1D0F5F5C0068511A /* DiseaseViewController.swift */,
 				5483661B1D0F341D0068511A /* Main.storyboard */,
+				F3F644191D19CA0A005736F8 /* ResultsViewController.swift */,
 				540C8DD01D117FE100934E35 /* Results.swift */,
 				548366391D0F594E0068511A /* DiseaseCell.swift */,
 				540C8DCE1D1047D700934E35 /* ButtonCell.swift */,
@@ -224,6 +227,7 @@
 				5483663E1D0F5F5C0068511A /* DiseaseViewController.swift in Sources */,
 				548366181D0F341D0068511A /* AppDelegate.swift in Sources */,
 				540C8DCF1D1047D700934E35 /* ButtonCell.swift in Sources */,
+				F3F6441A1D19CA0A005736F8 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
