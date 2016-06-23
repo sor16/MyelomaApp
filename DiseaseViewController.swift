@@ -141,8 +141,8 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
             print(exp(-BaseLine[364]*exp(coefSum)))
             print(exp(-BaseLine[365*5-1]*exp(coefSum)))
             let dest = segue.destinationViewController as! ResultsViewController
-            dest.oneYearSurv.text = String(exp(BaseLine[364]*exp(coefSum)))
-            dest.fiveYearSurv.text = String(exp(-BaseLine[365*5-1]*exp(coefSum)))
+            dest.oneYearSurv = exp(BaseLine[364]*exp(coefSum))
+            //dest.fiveYearSurv = exp(-BaseLine[365*5-1]*exp(coefSum))
         }
     }
     

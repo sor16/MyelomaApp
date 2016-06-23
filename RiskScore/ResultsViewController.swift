@@ -9,12 +9,14 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-    @IBOutlet weak var oneYearSurv : UILabel!
-    @IBOutlet weak var fiveYearSurv : UILabel!
-    
+    @IBOutlet weak var oneYearSurvLab : UILabel!
+//    @IBOutlet weak var fiveYearSurvLab : UILabel!
+    var oneYearSurv : Double!
+    //var fiveYearSurv : Double!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        oneYearSurvLab.text = String(oneYearSurv)
+        //fiveYearSurvLab.text = String(fiveYearSurv)
         // Do any additional setup after loading the view.
     }
 
