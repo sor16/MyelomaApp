@@ -207,8 +207,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="fiveYearSurv" destination="ReN-ut-tbU" id="Ozs-FD-ned"/>
-                        <outlet property="oneYearSurv" destination="mp4-3m-X3e" id="9IN-xU-uqv"/>
+                        <outlet property="fiveYearSurvLab" destination="ReN-ut-tbU" id="M3A-5l-Aw9"/>
+                        <outlet property="oneYearSurvLab" destination="mp4-3m-X3e" id="qxg-lU-3OJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olP-Z7-B5x" userLabel="First Responder" sceneMemberID="firstResponder"/>

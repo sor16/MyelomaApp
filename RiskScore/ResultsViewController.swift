@@ -9,15 +9,17 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-    @IBOutlet weak var oneYearSurvLab : UILabel!
-//    @IBOutlet weak var fiveYearSurvLab : UILabel!
     var oneYearSurv : Double!
-    //var fiveYearSurv : Double!
+    var fiveYearSurv : Double!
+    
+    @IBOutlet weak var oneYearSurvLab : UILabel!
+    @IBOutlet weak var fiveYearSurvLab : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        oneYearSurvLab.text = String(oneYearSurv)
-        //fiveYearSurvLab.text = String(fiveYearSurv)
-        // Do any additional setup after loading the view.
+        
+        oneYearSurvLab.text = String(round(oneYearSurv*1000)/10) + "%"
+        fiveYearSurvLab.text = String(round(fiveYearSurv*1000)/10) + "%"
     }
 
     override func didReceiveMemoryWarning() {
