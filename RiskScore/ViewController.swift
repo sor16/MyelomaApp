@@ -8,6 +8,8 @@
 
 import UIKit
 
+var purpleColor : UIColor = UIColor(red: 126/255, green: 67/255, blue: 1, alpha: 1)
+
 class ViewController: UIViewController{
     @IBOutlet weak var sex: UISegmentedControl!
     @IBOutlet weak var age: UITextField!
