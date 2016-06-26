@@ -5,7 +5,7 @@
 "COPD"
 "Dementia"
 "Arrythmia"
-"Autoimmune.disease"
+"Atrial.fibrillation"
 "Peripheral.vascular.disease"
 "Hepatitis"
 "Cirrhosis.Failure"
