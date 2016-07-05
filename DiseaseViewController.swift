@@ -14,12 +14,16 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var diseaseArray : [Disease] = []
     var Coefficients : [Double] = []
+    var lower : [Double] = []
+    var upper : [Double] = []
     var ColMeans : [Double] = []
     var BaseLine : [Double] = []
     var results : Results!
     
     var txtFileVar : [String] = []
     var txtFileCoef : [String] = []
+    var txtFileLower : [String] = []
+    var txtFileUpper : [String] = []
     var txtFileMeans : [String] = []
     var txtFileBaseLine : [String]=[]
     
@@ -57,15 +61,26 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
             txtFileVar[i] = txtFileVar[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
             diseaseArray.append(Disease().initWithDiseaseName(txtFileVar[i], selected: false))
         }
-        
+        txtFileLower = arrayFromContentsOfFileWithName("lower.txt")!
+        txtFileUpper = arrayFromContentsOfFileWithName("upper.txt")!
         txtFileCoef = arrayFromContentsOfFileWithName("coefficients.txt")!
         txtFileMeans = arrayFromContentsOfFileWithName("Means.txt")!
         
         for i in 0..<txtFileCoef.count{
+            // Reading coefficients file
             txtFileCoef[i] = txtFileCoef[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
             Coefficients.append(Double(txtFileCoef[i])!)
+            // Reading lower file
+            txtFileLower[i] = txtFileCoef[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            lower.append(Double(txtFileCoef[i])!)
+            // Reading upper file
+            txtFileUpper[i] = txtFileUpper[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            lower.append(Double(txtFileUpper[i])!)
+            // Reading Means file
             txtFileMeans[i] = txtFileMeans[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
             ColMeans.append(Double(txtFileMeans[i])!)
+            
+            
         }
         txtFileBaseLine = arrayFromContentsOfFileWithName("baseline.txt")!
         for i in 0..<txtFileBaseLine.count{
@@ -138,12 +153,10 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
             for i in 0..<modelArray.count {
                 coefSum += Coefficients[i]*(Double(modelArray[i])-ColMeans[i])
             }
-            print(exp(-BaseLine[364]*exp(coefSum)))
-            print(exp(-BaseLine[365*5-1]*exp(coefSum)))
             
             let dest = segue.destinationViewController as! ResultsViewController
             dest.oneYearSurv = exp(-BaseLine[364]*exp(coefSum))
-            dest.fiveYearSurv = exp(-BaseLine[365*5-1]*exp(coefSum))
+            dest.fiveYearSurv = exp(-BaseLine[365*5-3]*exp(coefSum))
         }
     }
     

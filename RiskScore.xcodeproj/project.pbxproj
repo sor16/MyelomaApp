@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5403C6AE1D2BDC0400CD0416 /* upper.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5403C6AD1D2BDC0400CD0416 /* upper.txt */; };
+		5403C6B01D2BDC1000CD0416 /* lower.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5403C6AF1D2BDC1000CD0416 /* lower.txt */; };
 		540C8DCF1D1047D700934E35 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C8DCE1D1047D700934E35 /* ButtonCell.swift */; };
 		540C8DD11D117FE100934E35 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C8DD01D117FE100934E35 /* Results.swift */; };
 		546F0B321D19CD900083030D /* baseline.txt in Resources */ = {isa = PBXBuildFile; fileRef = 546F0B311D19CD900083030D /* baseline.txt */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5403C6AD1D2BDC0400CD0416 /* upper.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = upper.txt; sourceTree = "<group>"; };
+		5403C6AF1D2BDC1000CD0416 /* lower.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lower.txt; sourceTree = "<group>"; };
 		540C8DCE1D1047D700934E35 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		540C8DD01D117FE100934E35 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		546F0B311D19CD900083030D /* baseline.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baseline.txt; sourceTree = "<group>"; };
@@ -105,7 +109,9 @@
 				5483661B1D0F341D0068511A /* Main.storyboard */,
 				546F0B311D19CD900083030D /* baseline.txt */,
 				546F0B331D19CD9C0083030D /* coefficients.txt */,
+				5403C6AF1D2BDC1000CD0416 /* lower.txt */,
 				54E44C0C1D19D41E000E554D /* Means.txt */,
+				5403C6AD1D2BDC0400CD0416 /* upper.txt */,
 				F3F644191D19CA0A005736F8 /* ResultsViewController.swift */,
 				F3F6441C1D20991B005736F8 /* DetailViewController.swift */,
 				540C8DD01D117FE100934E35 /* Results.swift */,
@@ -214,6 +220,8 @@
 				548366221D0F341D0068511A /* LaunchScreen.storyboard in Resources */,
 				5483661F1D0F341D0068511A /* Assets.xcassets in Resources */,
 				54E44C0D1D19D41E000E554D /* Means.txt in Resources */,
+				5403C6AE1D2BDC0400CD0416 /* upper.txt in Resources */,
+				5403C6B01D2BDC1000CD0416 /* lower.txt in Resources */,
 				546F0B341D19CD9C0083030D /* coefficients.txt in Resources */,
 				546F0B321D19CD900083030D /* baseline.txt in Resources */,
 				54F8B62B1D160B91001FFE90 /* variables.txt in Resources */,
