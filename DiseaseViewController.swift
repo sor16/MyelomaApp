@@ -7,26 +7,28 @@
 //
 
 import UIKit
+import Foundation
 
 class DiseaseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Declaring variables
-    
-    var diseaseArray : [Disease] = []
-    var Coefficients : [Double] = []
-    var lower : [Double] = []
-    var upper : [Double] = []
-    var ColMeans : [Double] = []
-    var BaseLine : [Double] = []
-    var results : Results!
-    
-    var txtFileVar : [String] = []
-    var txtFileCoef : [String] = []
-    var txtFileLower : [String] = []
-    var txtFileUpper : [String] = []
-    var txtFileMeans : [String] = []
-    var txtFileBaseLine : [String]=[]
-    
+    var selections : [Double] = []
+    //Names of diseases
+    var diseaseArray : [String] = []
+    //Beta coefficients in a Cox model
+    var Coefficients : [String] = []
+    var lower : [String] = []
+    var upper : [String] = []
+    //Mean values of covariates in data set
+    var ColMeans : [String] = []
+    //Non parametric estimate of survival function at the mean value of covariates
+    var BaseLineSurv : [String] = []
+    var BaseLineLower : [String] = []
+    var BaseLineUpper : [String] = []
+    //Variables segue-d from ViewController
+    var age: Double!
+    var sex: Double!
+    //UI elements
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var Scroller: UIScrollView!
     @IBOutlet weak var SubmitButton: UIButton!
@@ -46,47 +48,29 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
         } catch _ as NSError {
             return nil
         }
+        var fileValues: [String]! = []
+        fileValues = fileContents!.componentsSeparatedByString(",")
+        fileValues[fileValues.count-1] = fileValues[fileValues.count-1].stringByReplacingOccurrencesOfString("\n", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
-        return fileContents!.componentsSeparatedByString("\n")
+        return fileValues
     }
-    // Assia
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Reading in data
+        lower = arrayFromContentsOfFileWithName("lower.txt")!
+        upper = arrayFromContentsOfFileWithName("upper.txt")!
+        Coefficients = arrayFromContentsOfFileWithName("coefficients.txt")!
+        ColMeans = arrayFromContentsOfFileWithName("Means.txt")!
+        diseaseArray = arrayFromContentsOfFileWithName("variables.txt")!
         
-        // Do any additional setup after loading the view
-        //
-        txtFileVar = arrayFromContentsOfFileWithName("variables.txt")!
+        //initializing user disease selections array
+        selections = [Double](count: diseaseArray.count, repeatedValue: 0)
         
-        for i in 0..<txtFileVar.count {
-            txtFileVar[i] = txtFileVar[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            diseaseArray.append(Disease().initWithDiseaseName(txtFileVar[i], selected: false))
-        }
-        txtFileLower = arrayFromContentsOfFileWithName("lower.txt")!
-        txtFileUpper = arrayFromContentsOfFileWithName("upper.txt")!
-        txtFileCoef = arrayFromContentsOfFileWithName("coefficients.txt")!
-        txtFileMeans = arrayFromContentsOfFileWithName("Means.txt")!
-        
-        for i in 0..<txtFileCoef.count{
-            // Reading coefficients file
-            txtFileCoef[i] = txtFileCoef[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            Coefficients.append(Double(txtFileCoef[i])!)
-            // Reading lower file
-            txtFileLower[i] = txtFileCoef[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            lower.append(Double(txtFileCoef[i])!)
-            // Reading upper file
-            txtFileUpper[i] = txtFileUpper[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            lower.append(Double(txtFileUpper[i])!)
-            // Reading Means file
-            txtFileMeans[i] = txtFileMeans[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            ColMeans.append(Double(txtFileMeans[i])!)
-            
-            
-        }
-        txtFileBaseLine = arrayFromContentsOfFileWithName("baseline.txt")!
-        for i in 0..<txtFileBaseLine.count{
-            txtFileBaseLine[i] = txtFileBaseLine[i].stringByReplacingOccurrencesOfString("\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            BaseLine.append(Double(txtFileBaseLine[i])!)
-        }
+        BaseLineSurv = arrayFromContentsOfFileWithName("survBase.txt")!
+        BaseLineLower = arrayFromContentsOfFileWithName("lowerBase.txt")!
+        BaseLineUpper = arrayFromContentsOfFileWithName("upperBase.txt")!
+
         
     }
     
@@ -116,16 +100,17 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
         }
         let cell = tableView.dequeueReusableCellWithIdentifier("diseaseCell")! as UITableViewCell
-        
-        cell.textLabel?.text = diseaseArray[indexPath.row].diseaseName
-        cell.accessoryType = (diseaseArray[indexPath.row].diseaseSelected) ? .Checkmark : .None
+        let epsilon: Double = pow(10,-5)
+        cell.textLabel?.text = diseaseArray[indexPath.row]
+        cell.accessoryType = (abs(selections[indexPath.row]-1) < epsilon) ? .Checkmark : .None
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        diseaseArray[indexPath.row].diseaseSelected = !diseaseArray[indexPath.row].diseaseSelected
-        
+        if(indexPath.row < diseaseArray.count){
+            selections[indexPath.row] = 1-selections[indexPath.row]
+        }
         tableView.reloadData()
     }
     
@@ -133,31 +118,46 @@ class DiseaseViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Navigation
     
     @IBAction func Calculate(sender: UIButton) {
-        results.diseases = diseaseArray
         self.performSegueWithIdentifier("Calculate", sender: sender)
     }
+    //function to calculate survival function from parameters in Cox model
+    func predictSurv(baseLine: [Double], linearPredictor: Double) -> [Double]{
+        var prediction = [Double](count: baseLine.count , repeatedValue: 0)
+        for i in 0..<baseLine.count{
+            prediction[i] = pow(baseLine[i],exp(linearPredictor))
+        }
+        return prediction
+    }
+    //convert wanted indices from Base arrays to Double
+    func getBaseLine(baseArray: [String],indices: [Int]) -> [Double] {
+        var outBase : [Double] = []
+        for i in indices{
+            outBase.append(Double(baseArray[i])!)
+        }
+        return outBase
+    }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //Perform calculations if button Calculate is pressed
         if segue.identifier == "Calculate" {
-            // Calculate info...
-            
-            var modelArray : [Int] = [2013, results.sex.rawValue,results.age]
-            
-            for disease in diseaseArray {
-                modelArray.append(Int(disease.diseaseSelected))
-            }
             var coefSum : Double = 0
-            for i in 0..<modelArray.count {
-                coefSum += Coefficients[i]*(Double(modelArray[i])-ColMeans[i])
+            var lowerSum : Double = 0
+            var upperSum : Double = 0
+            var correctedCoef : Double = 0
+            var Patient = [Double](count: 3 + selections.count, repeatedValue: 0)
+            Patient = [2013, sex,age] + selections
+            for i in 0..<Patient.count {
+                correctedCoef = Patient[i]-Double(ColMeans[i])!
+                coefSum += Double(Coefficients[i])!*correctedCoef
+                lowerSum += Double(lower[i])!*correctedCoef
+                upperSum += Double(upper[i])!*correctedCoef
             }
             
             let dest = segue.destinationViewController as! ResultsViewController
-            dest.oneYearSurv = exp(-BaseLine[364]*exp(coefSum))
-            dest.fiveYearSurv = exp(-BaseLine[365*5-3]*exp(coefSum))
+            dest.surv = predictSurv(getBaseLine(BaseLineSurv,indices: [364,1799]),linearPredictor: coefSum)
+            dest.lower = predictSurv(getBaseLine(BaseLineLower,indices: [364,1799]),linearPredictor: lowerSum)
+            dest.upper = predictSurv(getBaseLine(BaseLineUpper,indices: [364,1799]),linearPredictor: upperSum)
+
         }
     }
-    
 }

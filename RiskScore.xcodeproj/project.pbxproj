@@ -11,8 +11,12 @@
 		5403C6B01D2BDC1000CD0416 /* lower.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5403C6AF1D2BDC1000CD0416 /* lower.txt */; };
 		540C8DCF1D1047D700934E35 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C8DCE1D1047D700934E35 /* ButtonCell.swift */; };
 		540C8DD11D117FE100934E35 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C8DD01D117FE100934E35 /* Results.swift */; };
-		546F0B321D19CD900083030D /* baseline.txt in Resources */ = {isa = PBXBuildFile; fileRef = 546F0B311D19CD900083030D /* baseline.txt */; };
+		546528641D649B5D0094C210 /* MARCCoefficients.txt in Resources */ = {isa = PBXBuildFile; fileRef = 546528631D649B5D0094C210 /* MARCCoefficients.txt */; };
 		546F0B341D19CD9C0083030D /* coefficients.txt in Resources */ = {isa = PBXBuildFile; fileRef = 546F0B331D19CD9C0083030D /* coefficients.txt */; };
+		5480A5871D48FC1E00ED2174 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5480A5861D48FC1E00ED2174 /* Patient.swift */; };
+		5480A5891D4D110000ED2174 /* lowerBase.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5480A5881D4D110000ED2174 /* lowerBase.txt */; };
+		5480A58B1D4D110B00ED2174 /* upperBase.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5480A58A1D4D110B00ED2174 /* upperBase.txt */; };
+		5480A58D1D4D112300ED2174 /* survBase.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5480A58C1D4D112300ED2174 /* survBase.txt */; };
 		548366181D0F341D0068511A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548366171D0F341D0068511A /* AppDelegate.swift */; };
 		5483661A1D0F341D0068511A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548366191D0F341D0068511A /* ViewController.swift */; };
 		5483661D1D0F341D0068511A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5483661B1D0F341D0068511A /* Main.storyboard */; };
@@ -43,8 +47,12 @@
 		5403C6AF1D2BDC1000CD0416 /* lower.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lower.txt; sourceTree = "<group>"; };
 		540C8DCE1D1047D700934E35 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		540C8DD01D117FE100934E35 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
-		546F0B311D19CD900083030D /* baseline.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baseline.txt; sourceTree = "<group>"; };
+		546528631D649B5D0094C210 /* MARCCoefficients.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MARCCoefficients.txt; sourceTree = "<group>"; };
 		546F0B331D19CD9C0083030D /* coefficients.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coefficients.txt; sourceTree = "<group>"; };
+		5480A5861D48FC1E00ED2174 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Patient.swift; path = ../Patient.swift; sourceTree = "<group>"; };
+		5480A5881D4D110000ED2174 /* lowerBase.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowerBase.txt; sourceTree = "<group>"; };
+		5480A58A1D4D110B00ED2174 /* upperBase.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = upperBase.txt; sourceTree = "<group>"; };
+		5480A58C1D4D112300ED2174 /* survBase.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = survBase.txt; sourceTree = "<group>"; };
 		548366141D0F341D0068511A /* RiskScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiskScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548366171D0F341D0068511A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		548366191D0F341D0068511A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,15 +115,19 @@
 				548366191D0F341D0068511A /* ViewController.swift */,
 				5483663D1D0F5F5C0068511A /* DiseaseViewController.swift */,
 				5483661B1D0F341D0068511A /* Main.storyboard */,
-				546F0B311D19CD900083030D /* baseline.txt */,
+				5480A5881D4D110000ED2174 /* lowerBase.txt */,
 				546F0B331D19CD9C0083030D /* coefficients.txt */,
+				546528631D649B5D0094C210 /* MARCCoefficients.txt */,
 				5403C6AF1D2BDC1000CD0416 /* lower.txt */,
+				5480A58C1D4D112300ED2174 /* survBase.txt */,
+				5480A58A1D4D110B00ED2174 /* upperBase.txt */,
 				54E44C0C1D19D41E000E554D /* Means.txt */,
 				5403C6AD1D2BDC0400CD0416 /* upper.txt */,
 				F3F644191D19CA0A005736F8 /* ResultsViewController.swift */,
 				F3F6441C1D20991B005736F8 /* DetailViewController.swift */,
 				540C8DD01D117FE100934E35 /* Results.swift */,
 				548366391D0F594E0068511A /* DiseaseCell.swift */,
+				5480A5861D48FC1E00ED2174 /* Patient.swift */,
 				540C8DCE1D1047D700934E35 /* ButtonCell.swift */,
 				5483663B1D0F5A330068511A /* Disease.swift */,
 				54F8B62A1D160B91001FFE90 /* variables.txt */,
@@ -218,12 +230,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				548366221D0F341D0068511A /* LaunchScreen.storyboard in Resources */,
+				5480A58D1D4D112300ED2174 /* survBase.txt in Resources */,
 				5483661F1D0F341D0068511A /* Assets.xcassets in Resources */,
+				546528641D649B5D0094C210 /* MARCCoefficients.txt in Resources */,
 				54E44C0D1D19D41E000E554D /* Means.txt in Resources */,
 				5403C6AE1D2BDC0400CD0416 /* upper.txt in Resources */,
+				5480A5891D4D110000ED2174 /* lowerBase.txt in Resources */,
+				5480A58B1D4D110B00ED2174 /* upperBase.txt in Resources */,
 				5403C6B01D2BDC1000CD0416 /* lower.txt in Resources */,
 				546F0B341D19CD9C0083030D /* coefficients.txt in Resources */,
-				546F0B321D19CD900083030D /* baseline.txt in Resources */,
 				54F8B62B1D160B91001FFE90 /* variables.txt in Resources */,
 				5483661D1D0F341D0068511A /* Main.storyboard in Resources */,
 			);
@@ -252,6 +267,7 @@
 				548366181D0F341D0068511A /* AppDelegate.swift in Sources */,
 				540C8DCF1D1047D700934E35 /* ButtonCell.swift in Sources */,
 				F3F6441A1D19CA0A005736F8 /* ResultsViewController.swift in Sources */,
+				5480A5871D48FC1E00ED2174 /* Patient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

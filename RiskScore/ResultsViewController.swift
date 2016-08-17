@@ -9,8 +9,9 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
-    var oneYearSurv : Double!
-    var fiveYearSurv : Double!
+    var surv : [Double]!
+    var lower : [Double]!
+    var upper : [Double]!
     
     @IBOutlet weak var oneYearSurvLab : UILabel!
     @IBOutlet weak var fiveYearSurvLab : UILabel!
@@ -19,27 +20,6 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var fiveYearView: UIView!
     
     var oneYearSegue : Bool!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        oneYearSurvLab.text = String(round(oneYearSurv*1000)/10) + "%"
-        fiveYearSurvLab.text = String(round(fiveYearSurv*1000)/10) + "%"
-        
-        oneYearView.backgroundColor = viewColor(oneYearSurv, risks: [0.33, 0.66])
-        oneYearView.layer.borderColor = purpleColor.CGColor
-        oneYearView.layer.borderWidth = 1.0
-        
-        let oneYearTap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
-        oneYearView.addGestureRecognizer(oneYearTap)
-        
-        fiveYearView.backgroundColor = viewColor(fiveYearSurv, risks: [0.2, 0.5])
-        fiveYearView.layer.borderColor = purpleColor.CGColor
-        fiveYearView.layer.borderWidth = 1.0
-        
-        let fiveYearTap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
-        fiveYearView.addGestureRecognizer(fiveYearTap)
-    }
     
     func tapped(sender : UIView) {
         self.performSegueWithIdentifier("detailSegue", sender: sender)
@@ -65,6 +45,28 @@ class ResultsViewController: UIViewController {
         
         return color
     }
+    
+    /*func survLabel(label: UILabel){
+     
+        return label
+    }*/
+    func survView(label: UILabel,View : UIView,surv : Double, borderColor : UIColor,risks : [Double]){
+        label.text = String(round(surv*1000)/10) + "%"
+        View.backgroundColor = viewColor(surv, risks: risks)
+        View.layer.borderColor = borderColor.CGColor
+        View.layer.borderWidth = 1.0
+        
+        let Tap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
+        View.addGestureRecognizer(Tap)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        survView(oneYearSurvLab,View : oneYearView,surv : surv[0],borderColor : purpleColor,risks : [0.33,0.66])
+        survView(fiveYearSurvLab,View : fiveYearView,surv : surv[1],borderColor : purpleColor,risks : [0.2,0.5])
+    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
